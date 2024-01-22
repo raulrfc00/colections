@@ -61,18 +61,51 @@
             $conexion = closeBd();
         }
 
-        function deleteCiudades()
-        {
-            $conexion = openBd();
+        function editPokemon($id, $nombre, $descripcion, $imagen, $region, $tipo) {
 
-            $sentenciaText = "delete from pokemons where cif = :cif";
-            $sentencia = $conexion->prepare($sentenciaText);
-            $sentencia->bindParam(':cif', $cif);
-            $sentencia->execute();
-
-
-            $conexion = closeBd();
+                $conexion = openBd(); // Asegúrate de tener una función para abrir la conexión a la base de datos
+        
+                // Preparar la sentencia SQL para actualizar el Pokémon
+                $sentenciaText = "UPDATE pokemons SET nombre = :nombre, descripcion = :descripcion, imagen = :imagen, region = :region, tipo = :tipo WHERE id = :id";
+                $sentencia = $conexion->prepare($sentenciaText);
+        
+                // Vincular los parámetros
+                $sentencia->bindParam(':id', $id);
+                $sentencia->bindParam(':nombre', $nombre);
+                $sentencia->bindParam(':descripcion', $descripcion);
+                $sentencia->bindParam(':imagen', $imagen);
+                $sentencia->bindParam(':region', $region);
+                $sentencia->bindParam(':tipo', $tipo);
+        
+                // Ejecutar la sentencia
+                $sentencia->execute();
+        
+                closeBd($conexion); // Asegúrate de tener una función para cerrar la conexión
+        
         }
+        function deletePokemon($id, $nombre, $descripcion, $imagen, $region, $tipo) {
+
+            $conexion = openBd(); // Asegúrate de tener una función para abrir la conexión a la base de datos
+    
+            // Preparar la sentencia SQL para actualizar el Pokémon
+            $sentenciaText = "DELETE FROM pokemons WHERE id = :id";
+            $sentencia = $conexion->prepare($sentenciaText);
+    
+            // Vincular los parámetros
+            $sentencia->bindParam(':id', $id);
+            $sentencia->bindParam(':nombre', $nombre);
+            $sentencia->bindParam(':descripcion', $descripcion);
+            $sentencia->bindParam(':imagen', $imagen);
+            $sentencia->bindParam(':region', $region);
+            $sentencia->bindParam(':tipo', $tipo);
+    
+            // Ejecutar la sentencia
+            $sentencia->execute();
+    
+            closeBd($conexion); // Asegúrate de tener una función para cerrar la conexión
+    
+    }
+        
     ?>
 </body>
 </html>

@@ -91,6 +91,47 @@ $pokemons = selectPokemons();
       </form>
 </div>
 
+<div id="formEditar" style="display: none;" >
+          <form action="controller.php" method="post" enctype="multipart/form-data" >
+
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon" required>
+              <label for="nombre">Nombre</label>
+          </div>
+          
+          <div class="form-floating mb-3">
+              <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción del Pokémon" style="height: 100px" required></textarea>
+              <label for="descripcion">Descripción</label>
+          </div>
+
+          <!-- Tipos de Pokémon como checkboxes -->
+          <div class="mb-3">
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoFuego" value="Fuego">
+                  <label class="form-check-label" for="tipoFuego">Fuego</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoPlanta" value="Planta">
+                  <label class="form-check-label" for="tipoPlanta">Planta</label>
+              </div>
+          </div>
+
+          <div class="form-floating mb-3">
+              <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen del Pokémon" required>
+              <label for="imagen">Imagen</label>
+          </div>
+
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="region" id="region" placeholder="Región del Pokémon" required>
+              <label for="region">Región</label>
+          </div>
+          <input type="hidden" name="id" id="editId">
+
+
+          <button name="edit" type="submit" class="btn btn-primary">Editar Cromo</button>
+      </form>
+</div>
+
 
     <div id="cartas" class="container mt-4">
         <div class="row">
@@ -102,8 +143,13 @@ $pokemons = selectPokemons();
                             <div class="flex-grow-1">
                                 <h5 class="card-title"><?php echo $pokemon['nombre']; ?></h5>
                                 <p class="card-text"><?php echo $pokemon['descripcion']; ?></p>
+                                <p class="card-text"><?php echo $pokemon['tipo']; ?></p>
+
+
                             </div>
-                            <a href="#" class="anyadirButton btn btn-primary mt-2" >Edit Card</a>
+                            <button class="editButton btn btn-primary mt-2" data-id="<?php echo $pokemon['id']; ?>">Edit Card</button>
+                            <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
+                            <input type="submit" name="delete" value="Delete Card" class="deleteButton btn btn-secondary mt-2">
                         </div>
                     </div>
                 </div>
@@ -114,11 +160,29 @@ $pokemons = selectPokemons();
 
         <script>
             const anyadirButtons = document.querySelectorAll('.anyadirButton');
+            const editButtons = document.querySelectorAll('.editButton');
+            const deleteButtons = document.querySelectorAll('.deleteButton');
+
 
             anyadirButtons.forEach(button => {
             button.addEventListener('click', function() {
             document.getElementById('formAnyadir').style.display = 'block';
             document.getElementById('cartas').style.display = 'none';
+        });
+    });
+    editButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            document.getElementById('editId').value = id; // Actualizar el campo oculto con el ID
+            document.getElementById('formEditar').style.display = 'block'; // Mostrar el formulario de edición
+            document.getElementById('cartas').style.display = 'none';
+            // Aquí puedes añadir más lógica si necesitas rellenar otros campos del formulario
+        });
+    });
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          
+            // Aquí puedes añadir más lógica si necesitas rellenar otros campos del formulario
         });
     });
               
