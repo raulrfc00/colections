@@ -48,7 +48,7 @@
         {
             $conexion = openBd();
 
-            $sentenciaText = "insert INTO pokemons (nombre, descripcion, imagen, region, tipo) values (:id, :nombre, :descripcion, :imagen, :region, :tipo)";
+            $sentenciaText = "insert INTO pokemons (nombre, descripcion, imagen, region, tipo) values (:nombre, :descripcion, :imagen, :region, :tipo)";
             $sentencia = $conexion->prepare($sentenciaText);
             $sentencia->bindParam(':nombre', $nombre);
             $sentencia->bindParam(':descripcion', $descripcion);

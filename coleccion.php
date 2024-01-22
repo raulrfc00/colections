@@ -28,7 +28,7 @@ $pokemons = selectPokemons();
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="anyadirButton nav-link" href="#">Add Card</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,8 +53,8 @@ $pokemons = selectPokemons();
         </div>
       </nav>
 
-      <div id="formAnyadir" style="display: none;" enctype="multipart/form-data">
-          <form action="controller.php" method="post" >
+      <div id="formAnyadir" style="display: none;" >
+          <form action="controller.php" method="post" enctype="multipart/form-data" >
           <div class="form-floating mb-3">
               <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon" required>
               <label for="nombre">Nombre</label>
@@ -103,7 +103,7 @@ $pokemons = selectPokemons();
                                 <h5 class="card-title"><?php echo $pokemon['nombre']; ?></h5>
                                 <p class="card-text"><?php echo $pokemon['descripcion']; ?></p>
                             </div>
-                            <a href="#" id="anyadirButton" class="btn btn-primary mt-2" >Añadir Cromo</a>
+                            <a href="#" class="anyadirButton btn btn-primary mt-2" >Edit Card</a>
                         </div>
                     </div>
                 </div>
@@ -113,11 +113,15 @@ $pokemons = selectPokemons();
 
 
         <script>
-            document.getElementById('anyadirButton').addEventListener('click', function() {
-                document.getElementById('formAnyadir').style.display = 'block';
-                document.getElementById('cartas').style.display = 'none';
+            const anyadirButtons = document.querySelectorAll('.anyadirButton');
+
+            anyadirButtons.forEach(button => {
+            button.addEventListener('click', function() {
+            document.getElementById('formAnyadir').style.display = 'block';
+            document.getElementById('cartas').style.display = 'none';
+        });
+    });
               
-            });
         </script>
     
       </div>
