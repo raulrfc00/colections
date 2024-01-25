@@ -132,6 +132,28 @@ $pokemons = selectPokemons();
       </form>
 </div>
 
+<div id = "formDelete" style = "display: none;">
+        <form action="controller.php" method="post">
+
+            <div class="card">
+                <div class="card-header">
+                    Eliminar Pokemon
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">¿Seguro que quieres eliminar este pokemon?</h5>
+
+
+                    <button id = "cancelar" name="cancelar" class="btn btn-primary">Cancelar</button>
+                    <button name="delete" type="submit" class="btn btn-danger">Eliminar</button>
+
+                    <input type="hidden" name="id" id="deleteId">
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
     <div id="cartas" class="container mt-4">
         <div class="row">
@@ -149,19 +171,19 @@ $pokemons = selectPokemons();
                             </div>
                             <button class="editButton btn btn-primary mt-2" data-id="<?php echo $pokemon['id']; ?>">Edit Card</button>
                             <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
-                            <input type="submit" name="delete" value="Delete Card" class="deleteButton btn btn-secondary mt-2">
+                            <input type="button" value="Delete Card" class="deleteButton btn btn-danger mt-2" data-id="<?php echo $pokemon['id']; ?>">
                         </div>
                     </div>
                 </div>
             <?php } ?>
         </div>
     </div>
-
-
         <script>
             const anyadirButtons = document.querySelectorAll('.anyadirButton');
             const editButtons = document.querySelectorAll('.editButton');
             const deleteButtons = document.querySelectorAll('.deleteButton');
+            const botonCancelar = document.getElementById('cancelar');
+
 
 
             anyadirButtons.forEach(button => {
@@ -174,18 +196,25 @@ $pokemons = selectPokemons();
         button.addEventListener('click', function() {
             const id = this.getAttribute('data-id');
             document.getElementById('editId').value = id; // Actualizar el campo oculto con el ID
-            document.getElementById('formEditar').style.display = 'block'; // Mostrar el formulario de edición
+            document.getElementById('formEditar').style.display = 'block'; 
             document.getElementById('cartas').style.display = 'none';
-            // Aquí puedes añadir más lógica si necesitas rellenar otros campos del formulario
         });
     });
     deleteButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          
-            // Aquí puedes añadir más lógica si necesitas rellenar otros campos del formulario
-        });
+    button.addEventListener('click', function() {
+        const id = this.getAttribute('data-id');
+        document.getElementById('deleteId').value = id; // Actualiza el campo oculto con el ID
+        document.getElementById('formDelete').style.display = 'block'; // Muestra el formulario de eliminación
+        document.getElementById('cartas').style.display = 'none';
+
     });
-              
+});
+
+    botonCancelar.addEventListener('click', function(){
+        document.getElementById('formDelete').style.display = 'none'; // ocultar el formulario de edición
+        document.getElementById('cartas').style.display = 'block';
+
+    });
         </script>
     
       </div>

@@ -83,7 +83,7 @@
                 closeBd($conexion); // Asegúrate de tener una función para cerrar la conexión
         
         }
-        function deletePokemon($id, $nombre, $descripcion, $imagen, $region, $tipo) {
+        function deletePokemon($id) {
 
             $conexion = openBd(); // Asegúrate de tener una función para abrir la conexión a la base de datos
     
@@ -93,11 +93,6 @@
     
             // Vincular los parámetros
             $sentencia->bindParam(':id', $id);
-            $sentencia->bindParam(':nombre', $nombre);
-            $sentencia->bindParam(':descripcion', $descripcion);
-            $sentencia->bindParam(':imagen', $imagen);
-            $sentencia->bindParam(':region', $region);
-            $sentencia->bindParam(':tipo', $tipo);
     
             // Ejecutar la sentencia
             $sentencia->execute();
