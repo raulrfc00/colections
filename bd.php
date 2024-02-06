@@ -16,7 +16,7 @@
 
 
             $conexion = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            // set the PDO error mode to exception
+            
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conexion->exec("set names utf8");
 
@@ -63,9 +63,9 @@
 
         function editPokemon($id, $nombre, $descripcion, $imagen, $region, $tipo) {
 
-                $conexion = openBd(); // Asegúrate de tener una función para abrir la conexión a la base de datos
+                $conexion = openBd(); 
         
-                // Preparar la sentencia SQL para actualizar el Pokémon
+               
                 $sentenciaText = "UPDATE pokemons SET nombre = :nombre, descripcion = :descripcion, imagen = :imagen, region = :region, tipo = :tipo WHERE id = :id";
                 $sentencia = $conexion->prepare($sentenciaText);
         
@@ -80,14 +80,14 @@
                 // Ejecutar la sentencia
                 $sentencia->execute();
         
-                closeBd($conexion); // Asegúrate de tener una función para cerrar la conexión
+                closeBd($conexion); 
         
         }
         function deletePokemon($id) {
 
-            $conexion = openBd(); // Asegúrate de tener una función para abrir la conexión a la base de datos
+            $conexion = openBd(); 
     
-            // Preparar la sentencia SQL para actualizar el Pokémon
+            
             $sentenciaText = "DELETE FROM pokemons WHERE id = :id";
             $sentencia = $conexion->prepare($sentenciaText);
     
@@ -97,7 +97,7 @@
             // Ejecutar la sentencia
             $sentencia->execute();
     
-            closeBd($conexion); // Asegúrate de tener una función para cerrar la conexión
+            closeBd($conexion); 
     
     }
         

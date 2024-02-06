@@ -1,5 +1,5 @@
 <?php
-require_once("coleccion.php"); // Cambia esto por el nombre de tu archivo de funciones
+require_once("coleccion.php"); 
 
 if (isset($_POST['insert'])) {
     $nombre = $_POST['nombre'];
@@ -9,7 +9,7 @@ if (isset($_POST['insert'])) {
 
     // Manejar la carga del archivo
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $rutaCarpetaDestino = "imagenes/";  // Asegúrate de que esta carpeta existe en tu servidor
+        $rutaCarpetaDestino = "imagenes/";  
         $nombreArchivo = basename($_FILES["imagen"]["name"]);
         $rutaArchivoFinal = $rutaCarpetaDestino . $nombreArchivo;
 
@@ -29,9 +29,9 @@ if (isset($_POST['edit'])) {
     $descripcion = $_POST['descripcion'];
     $region = $_POST['region'];
     $tipo = implode(", ", $_POST['tipo']); 
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    //echo "<pre>";
+    //print_r($_POST);
+    //echo "</pre>";
 
 
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
@@ -51,8 +51,8 @@ if (isset($_POST['edit'])) {
 if (isset($_POST['delete'])) {
     $id = $_POST['id'];
     deletePokemon($id);
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    //echo "<pre>";
+    //print_r($_POST);
+    //echo "</pre>";
 }
 ?>
