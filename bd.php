@@ -43,6 +43,39 @@
 
             return $resultado;
         }
+        function selectTipos()
+        {
+            $conexion = openBd();
+
+            $sentenciaText = "select * from pokemon_tipos";
+
+            $sentencia = $conexion->prepare($sentenciaText);
+            $sentencia->execute();
+
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+            $conexion = closeBd();
+
+            return $resultado;
+        }
+        function asignarTipo($id)
+        {
+            $conexion = openBd();
+            $sentenciaText = "SELECT t.nombre 
+                                    FROM tipos t 
+                                    INNER JOIN pokemon_tipos pt ON t.id = pt.tipo_id 
+                                    WHERE pt.pokemon_id = ?
+                ";
+    
+            $sentencia = $conexion->prepare($sentenciaText);
+            $sentencia->execute([$id]);
+            
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    
+            $conexion = closeBd();
+    
+                return $resultado;
+        }
 
         function insertPokemons($nombre, $descripcion, $imagen, $region, $tipo)
         {
@@ -100,7 +133,8 @@
             closeBd($conexion); 
     
     }
-        
+
+    
     ?>
 </body>
 </html>

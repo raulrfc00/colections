@@ -3,6 +3,8 @@
 require_once("./bd.php");
 
 $pokemons = selectPokemons();
+$tipos_pokemons = selectTipos();
+
 
 ?>
 
@@ -147,8 +149,15 @@ $pokemons = selectPokemons();
                             <div class="flex-grow-1">
                                 <h5 class="card-title"><?php echo $pokemon['nombre']; ?></h5>
                                 <p class="card-text"><?php echo $pokemon['descripcion']; ?></p>
-                                <p class="card-text"><?php echo $pokemon['tipo']; ?></p>
 
+
+                                <p class="card-text"><?php 
+                                    $tipos = asignarTipo($pokemon['id']); // Asegúrate de que 'id' es el campo correcto
+                                    foreach($tipos as $tipo) {
+                                        echo $tipo['nombre'] . " "; // Esto imprimirá todos los tipos del Pokémon
+                                    }
+                                ?></p>
+                                
 
                             </div>
                             <button class="editButton btn btn-primary mt-2" data-id="<?php echo $pokemon['id']; ?>">Edit Card</button>
