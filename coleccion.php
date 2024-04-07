@@ -51,14 +51,80 @@ $tipos_pokemons = selectTipos();
 
           <!-- Tipos de Pokémon como checkboxes -->
           <div class="mb-3">
+          <div class="mb-3">
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoNormal" value="Normal">
+                  <label class="form-check-label" for="tipoNormal">Normal</label>
+              </div>
               <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoFuego" value="Fuego">
                   <label class="form-check-label" for="tipoFuego">Fuego</label>
               </div>
               <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoAgua" value="Agua">
+                  <label class="form-check-label" for="tipoAgua">Agua</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoElectrico" value="Electrico">
+                  <label class="form-check-label" for="tipoElectrico">Eléctrico</label>
+              </div>
+              <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoPlanta" value="Planta">
                   <label class="form-check-label" for="tipoPlanta">Planta</label>
               </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoHielo" value="Hielo">
+                  <label class="form-check-label" for="tipoHielo">Hielo</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoLucha" value="Hielo">
+                  <label class="form-check-label" for="tipoLucha">Lucha</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoVeneno" value="Veneno">
+                  <label class="form-check-label" for="tipoVeneno">Veneno</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoTierra" value="Tierra">
+                  <label class="form-check-label" for="tipoTierra">Tierra</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoVolador" value="Volador">
+                  <label class="form-check-label" for="tipoVolador">Volador</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoPsiquico" value="Psiquico">
+                  <label class="form-check-label" for="tipoPsiquico">Psíquico</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoBicho" value="Bicho">
+                  <label class="form-check-label" for="tipoBicho">Bicho</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoRoca" value="Roca">
+                  <label class="form-check-label" for="tipoRoca">Roca</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoFantasma" value="Fantasma">
+                  <label class="form-check-label" for="tipoFantasma">Fantasma</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoDragon" value="Dragon">
+                  <label class="form-check-label" for="tipoDragon">Dragón</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoSiniestro" value="Siniestro">
+                  <label class="form-check-label" for="tipoSiniestro">Siniestro</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoAcero" value="Acero">
+                  <label class="form-check-label" for="tipoAcero">Acero</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="tipo[]" id="tipoHada" value="Hada">
+                  <label class="form-check-label" for="tipoHada">Hada</label>
+              </div>
+              
           </div>
 
           <div class="form-floating mb-3">

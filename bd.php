@@ -61,7 +61,7 @@
         function asignarTipo($id)
         {
             $conexion = openBd();
-            $sentenciaText = "SELECT t.nombre 
+            $sentenciaText = "      SELECT t.nombre 
                                     FROM tipos t 
                                     INNER JOIN pokemon_tipos pt ON t.id = pt.tipo_id 
                                     WHERE pt.pokemon_id = ?
@@ -89,7 +89,7 @@
             $sentencia->bindParam(':region', $region);
             $sentencia->bindParam(':tipo', $tipo);
             $sentencia->execute();
-
+            
 
             $conexion = closeBd();
         }
